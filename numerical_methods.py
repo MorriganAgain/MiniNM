@@ -27,7 +27,7 @@ def explicit_euler(function, mesh, initial_state, parameters) -> np.ndarray:
         try: step_size = mesh[step_count + 1] - step
         except: step_size = 0  # This is horrible... 
         
-        state = calculate_step(function, order, state, step_size, pass_in_params(step_count, parameters))
+        state = calculate_explicit_step(function, order, state, step_size, pass_in_params(step_count, parameters))
         
     return solution
 
@@ -46,7 +46,7 @@ def pass_in_params(step_count, parameters) -> dict:
         else: passed_params[key] = val  # if constant
     return passed_params
 
-def calculate_step(function, order, state, step_size, parameters) -> np.ndarray:  # May be useful outside of the above function
+def calculate_explicit_step(function, order, state, step_size, parameters) -> np.ndarray:  # May be useful outside of the above function
     
     """ 
     Approximate a given ODE over a single time step using the explicit/forward Euler method.
@@ -73,6 +73,8 @@ def calculate_step(function, order, state, step_size, parameters) -> np.ndarray:
             new_state[n] = state[n] + step_size * state[n+1]
         
     return new_state
+
+
 
 
 
