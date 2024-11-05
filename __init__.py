@@ -2,7 +2,9 @@
 
 version = "1.0" 
 
-__all__ = ["explicit_euler", "helpers"]
+__all__ = ["iterative_methods", "numerical_methods", "helpers"]
 
-from . import explicit_euler
+from . import iterative_methods
+from . import numerical_methods
 from . import helpers
+
